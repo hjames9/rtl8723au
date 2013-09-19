@@ -54,7 +54,7 @@ jackson@realtek.com.tw
 #include <rtw_io.h>
 #include <osdep_intf.h>
 
-#if defined (PLATFORM_LINUX) && defined (PLATFORM_WINDOWS)
+#if defined(PLATFORM_LINUX) && defined(PLATFORM_WINDOWS)
 #error "Shall be Linux or Windows, but not both!\n"
 #endif
 
@@ -87,10 +87,10 @@ jackson@realtek.com.tw
 #endif
 
 
-u8 _rtw_read8(_adapter *adapter, u32 addr)
+u8 _rtw_read8(_adapter * adapter, u32 addr)
 {
 	u8 r_val;
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	u8 (*_read8)(struct intf_hdl *pintfhdl, u32 addr);
@@ -105,7 +105,7 @@ u8 _rtw_read8(_adapter *adapter, u32 addr)
 u16 _rtw_read16(_adapter *adapter, u32 addr)
 {
 	u16 r_val;
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	u16	(*_read16)(struct intf_hdl *pintfhdl, u32 addr);
@@ -120,7 +120,7 @@ u16 _rtw_read16(_adapter *adapter, u32 addr)
 u32 _rtw_read32(_adapter *adapter, u32 addr)
 {
 	u32 r_val;
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	u32	(*_read32)(struct intf_hdl *pintfhdl, u32 addr);
@@ -135,7 +135,7 @@ u32 _rtw_read32(_adapter *adapter, u32 addr)
 
 int _rtw_write8(_adapter *adapter, u32 addr, u8 val)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	int (*_write8)(struct intf_hdl *pintfhdl, u32 addr, u8 val);
@@ -150,7 +150,7 @@ int _rtw_write8(_adapter *adapter, u32 addr, u8 val)
 }
 int _rtw_write16(_adapter *adapter, u32 addr, u16 val)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	int (*_write16)(struct intf_hdl *pintfhdl, u32 addr, u16 val);
@@ -166,7 +166,7 @@ int _rtw_write16(_adapter *adapter, u32 addr, u16 val)
 }
 int _rtw_write32(_adapter *adapter, u32 addr, u32 val)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	int (*_write32)(struct intf_hdl *pintfhdl, u32 addr, u32 val);
@@ -181,24 +181,24 @@ int _rtw_write32(_adapter *adapter, u32 addr, u32 val)
 	return RTW_STATUS_CODE(ret);
 }
 
-int _rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *pdata)
+int _rtw_writeN(_adapter *adapter, u32 addr, u32 length, u8 *pdata)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
-        struct	intf_hdl	*pintfhdl = (struct intf_hdl*)(&(pio_priv->intf));
-	int (*_writeN)(struct intf_hdl *pintfhdl, u32 addr,u32 length, u8 *pdata);
+	struct	intf_hdl	*pintfhdl = (struct intf_hdl *)(&(pio_priv->intf));
+	int (*_writeN)(struct intf_hdl *pintfhdl, u32 addr, u32 length, u8 *pdata);
 	int ret;
 	_func_enter_;
 	_writeN = pintfhdl->io_ops._writeN;
 
-	ret = _writeN(pintfhdl, addr,length,pdata);
+	ret = _writeN(pintfhdl, addr, length, pdata);
 	_func_exit_;
 
 	return RTW_STATUS_CODE(ret);
 }
 int _rtw_write8_async(_adapter *adapter, u32 addr, u8 val)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	int (*_write8_async)(struct intf_hdl *pintfhdl, u32 addr, u8 val);
@@ -213,7 +213,7 @@ int _rtw_write8_async(_adapter *adapter, u32 addr, u8 val)
 }
 int _rtw_write16_async(_adapter *adapter, u32 addr, u16 val)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	int (*_write16_async)(struct intf_hdl *pintfhdl, u32 addr, u16 val);
@@ -228,7 +228,7 @@ int _rtw_write16_async(_adapter *adapter, u32 addr, u16 val)
 }
 int _rtw_write32_async(_adapter *adapter, u32 addr, u32 val)
 {
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	int (*_write32_async)(struct intf_hdl *pintfhdl, u32 addr, u32 val);
@@ -245,15 +245,14 @@ int _rtw_write32_async(_adapter *adapter, u32 addr, u32 val)
 void _rtw_read_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
 	void (*_read_mem)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 
 	_func_enter_;
 
-	if( (adapter->bDriverStopped ==_TRUE) || (adapter->bSurpriseRemoved == _TRUE))
-	{
-	     RT_TRACE(_module_rtl871x_io_c_, _drv_info_, ("rtw_read_mem:bDriverStopped(%d) OR bSurpriseRemoved(%d)", adapter->bDriverStopped, adapter->bSurpriseRemoved));
+	if ((adapter->bDriverStopped == _TRUE) || (adapter->bSurpriseRemoved == _TRUE)) {
+		RT_TRACE(_module_rtl871x_io_c_, _drv_info_, ("rtw_read_mem:bDriverStopped(%d) OR bSurpriseRemoved(%d)", adapter->bDriverStopped, adapter->bSurpriseRemoved));
 	     return;
 	}
 
@@ -268,7 +267,7 @@ void _rtw_read_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 void _rtw_write_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
 	void (*_write_mem)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 
@@ -285,15 +284,14 @@ void _rtw_write_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 void _rtw_read_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
 	u32 (*_read_port)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 
 	_func_enter_;
 
-	if( (adapter->bDriverStopped ==_TRUE) || (adapter->bSurpriseRemoved == _TRUE))
-	{
-	     RT_TRACE(_module_rtl871x_io_c_, _drv_info_, ("rtw_read_port:bDriverStopped(%d) OR bSurpriseRemoved(%d)", adapter->bDriverStopped, adapter->bSurpriseRemoved));
+	if ((adapter->bDriverStopped == _TRUE) || (adapter->bSurpriseRemoved == _TRUE)) {
+		RT_TRACE(_module_rtl871x_io_c_, _drv_info_, ("rtw_read_port:bDriverStopped(%d) OR bSurpriseRemoved(%d)", adapter->bDriverStopped, adapter->bSurpriseRemoved));
 	     return;
 	}
 
@@ -302,7 +300,6 @@ void _rtw_read_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 	_read_port(pintfhdl, addr, cnt, pmem);
 
 	_func_exit_;
-
 }
 
 void _rtw_read_port_cancel(_adapter *adapter)
@@ -313,7 +310,7 @@ void _rtw_read_port_cancel(_adapter *adapter)
 
 	_read_port_cancel = pintfhdl->io_ops._read_port_cancel;
 
-	if(_read_port_cancel)
+	if (_read_port_cancel)
 		_read_port_cancel(pintfhdl);
 
 }
@@ -321,7 +318,7 @@ void _rtw_read_port_cancel(_adapter *adapter)
 u32 _rtw_write_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
 	u32 (*_write_port)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
-	//struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue;
+	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
 	u32 ret = _SUCCESS;
@@ -362,7 +359,7 @@ void _rtw_write_port_cancel(_adapter *adapter)
 
 	_write_port_cancel = pintfhdl->io_ops._write_port_cancel;
 
-	if(_write_port_cancel)
+	if (_write_port_cancel)
 		_write_port_cancel(pintfhdl);
 
 }
@@ -387,12 +384,12 @@ int rtw_init_io_priv(_adapter *padapter, void (*set_intf_ops)(struct _io_ops *po
 #ifdef DBG_IO
 
 u16 read_sniff_ranges[][2] = {
-	//{0x550, 0x551},
+	/* {0x550, 0x551}, */
 };
 
 u16 write_sniff_ranges[][2] = {
-	//{0x550, 0x551},
-	//{0x4c, 0x4c},
+	/* {0x550, 0x551}, */
+	/* {0x4c, 0x4c}, */
 };
 
 int read_sniff_num = sizeof(read_sniff_ranges)/sizeof(u16)/2;
@@ -401,7 +398,7 @@ int write_sniff_num = sizeof(write_sniff_ranges)/sizeof(u16)/2;
 bool match_read_sniff_ranges(u16 addr, u16 len)
 {
 	int i;
-	for (i = 0; i<read_sniff_num; i++) {
+	for (i = 0; i < read_sniff_num; i++) {
 		if (addr + len > read_sniff_ranges[i][0] && addr <= read_sniff_ranges[i][1])
 			return _TRUE;
 	}
@@ -412,7 +409,7 @@ bool match_read_sniff_ranges(u16 addr, u16 len)
 bool match_write_sniff_ranges(u16 addr, u16 len)
 {
 	int i;
-	for (i = 0; i<write_sniff_num; i++) {
+	for (i = 0; i < write_sniff_num; i++) {
 		if (addr + len > write_sniff_ranges[i][0] && addr <= write_sniff_ranges[i][1])
 			return _TRUE;
 	}
@@ -471,7 +468,7 @@ int dbg_rtw_write32(_adapter *adapter, u32 addr, u32 val, const char *caller, co
 
 	return _rtw_write32(adapter, addr, val);
 }
-int dbg_rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *data, const char *caller, const int line)
+int dbg_rtw_writeN(_adapter *adapter, u32 addr, u32 length, u8 *data, const char *caller, const int line)
 {
 	if (match_write_sniff_ranges(addr, length))
 		DBG_8723A("DBG_IO %s:%d rtw_writeN(0x%04x, %u)\n", caller, line, addr, length);
